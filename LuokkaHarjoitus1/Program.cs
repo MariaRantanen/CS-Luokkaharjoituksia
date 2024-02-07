@@ -4,17 +4,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LuokkaHarjoitus1
+namespace Luokkaharjoituksia1
 {
+
+    Tee yliluokka Pet ja sille aliluokka Hare.Määrittele metodi Eats, joka tulostaa ruudulle eläimen ruokavalion. `Pet´- luokassa tyyliin "Syö ruokaa" ja aliluokassa "Syö porkkanoita". Käytä perinteistä määrittelyä virtuaaliseksi metodiksi ja ylikirjoitettavaksi metodiksi.
+
+    class Pet
+    {
+        public string name = "Lemmikki Eläin";
+
+        public Pet(string name)
+        { 
+            this.name = name; 
+        }
+        public void SayOpinion()
+        {
+            Console.WriteLine("Voi, lemmikit ne on elämän suola");
+        }
+    }
+
+        
     class Hooman
     {
-        // Define properties of Hooman 
+        // Define properties of Hooman ie. fields
         public string name = "Essi Esimerkki";
         public int age = 30;
-        public string gender = "emäntä";
+        public string gender = "Emäntä";
 
-        // Default constructor w/o  arguments
-        // No need to define, will be created automatically  
+        // Default constructor w/o arguments
+        // No need to define, will be crated automatically
         public Hooman()
         {
 
@@ -22,7 +40,7 @@ namespace LuokkaHarjoitus1
 
         // Constructor with one argument
         public Hooman(string name)
-        { 
+        {
             this.name = name;
         }
 
@@ -39,6 +57,7 @@ namespace LuokkaHarjoitus1
             this.name = name;
             this.age = age;
             this.gender = gender;
+
         }
 
         // A method to say something
@@ -47,6 +66,24 @@ namespace LuokkaHarjoitus1
             Console.WriteLine("Voi, lemmikit ne on elämän suola");
         }
     }
+
+    class CatOwner : Hooman
+    {
+        public new void SayOpinion()
+        {
+            Console.WriteLine("Kissat ovat itsenäisiä ja pitävät hiiret loitolla");
+        }
+    }
+
+    class DogOwner : Hooman
+    {
+        public new void SayOpinion()
+        {
+            Console.WriteLine("Koirat ovat luotettavia ystäviä");
+        }
+
+    }
+
     internal class Program
     {
         static void Main(string[] args)
@@ -57,12 +94,27 @@ namespace LuokkaHarjoitus1
             // Call the SayOpinion method
             owner.SayOpinion();
 
+            // Save owners name property to a variable
             string who = owner.name;
 
+            // Test it by echoing it to a console
             Console.WriteLine("totesi " + who);
-            
-            // Keep the window open until enter pressed
+
+            // Create a new catowner object
+            CatOwner catOwner = new CatOwner();
+
+            // Use catowners SayOpinion method
+            catOwner.SayOpinion();
+
+            // Create a new dogowner object
+            // and then use dogowners SayOpinion method
+            DogOwner dogOwner = new DogOwner();
+            dogOwner.SayOpinion();
+
+            // Keep the window opent until enter pressed
             Console.ReadLine();
+
+
         }
     }
 }
