@@ -7,23 +7,25 @@ using System.Threading.Tasks;
 namespace Luokkaharjoituksia1
 {
 
-    Tee yliluokka Pet ja sille aliluokka Hare.Määrittele metodi Eats, joka tulostaa ruudulle eläimen ruokavalion. `Pet´- luokassa tyyliin "Syö ruokaa" ja aliluokassa "Syö porkkanoita". Käytä perinteistä määrittelyä virtuaaliseksi metodiksi ja ylikirjoitettavaksi metodiksi.
+
 
     class Pet
     {
-        public string name = "Lemmikki Eläin";
-
-        public Pet(string name)
-        { 
-            this.name = name; 
-        }
-        public void SayOpinion()
+        public void eats()
         {
-            Console.WriteLine("Voi, lemmikit ne on elämän suola");
+            Console.WriteLine("Lemmikit syövät ruokaa");
         }
     }
 
-        
+    class Hare : Pet
+    {
+        public new void eats()
+        {
+            Console.WriteLine("Puput syövät porkkanoita");
+        }
+    }
+
+
     class Hooman
     {
         // Define properties of Hooman ie. fields
@@ -111,8 +113,18 @@ namespace Luokkaharjoituksia1
             DogOwner dogOwner = new DogOwner();
             dogOwner.SayOpinion();
 
+            Pet mussukka = new Pet();
+            mussukka.eats();
+
+            Hare hare = new Hare();
+            hare.eats();
+
             // Keep the window opent until enter pressed
             Console.ReadLine();
+
+
+
+
 
 
         }
